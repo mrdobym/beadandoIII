@@ -16,6 +16,7 @@ public:
     bool allandosag;
     bool josag;
 
+
     std::string getText() const { return _text; }
 protected:
     virtual void action() {} // akciókezelés, ez lehet rejtett

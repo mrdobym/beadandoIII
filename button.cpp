@@ -11,6 +11,7 @@ Button::Button(int px, int py, int sx, int sy, string text)
 
 void Button::setText(std::string text){_text=text;}
 
+
 void Button::draw()
 {
     gout << move_to(x, y) << color(255,255,255) << box(size_x, size_y);

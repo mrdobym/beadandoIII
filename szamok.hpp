@@ -52,5 +52,7 @@ protected:
     int y_hely_;
 
 
+
+
 };
 #endif // SZAMOK_HPP
