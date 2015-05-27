@@ -6,7 +6,6 @@ using namespace genv;
 Application::Application( int _SX, int _SY, std::string _name ) : SX(_SX), SY(_SY), name(_name) {
     isExiting = false;
     focused = -1;               // a program indulásakor semmi nincs fókuszban
-
 }
 
 void Application::addWidget( Widget *w ) {
@@ -15,10 +14,7 @@ void Application::addWidget( Widget *w ) {
 
 void Application::run() {
     gout.open( SX, SY );
-
     gout.set_title( name );
-
-
 
     event ev;
     while( gin>>ev && !isExiting ) {     // amíg fogadhat eseményeket és nincs kilépési módban
@@ -38,6 +34,7 @@ void Application::run() {
                 }
             }
         }
+        if( ev.type == ev_mouse && ev.button == -btn_left) focused = -1;
 
         for( size_t i=0; i<widgets.size(); ++i )            // közöljük a widgetekkel, hogy melyikük van fókuszban
             widgets[i]->set_focus( focused == (int)i );
@@ -50,7 +47,7 @@ void Application::run() {
             widgets[i]->handle( ev );                       // eseménykezelés widget szinten
 
         /// Vizualizálás
-        gout << move_to(0, 0) << color(200,0,0) << box(SX, SY);// képernyő törlése
+        gout << move_to(0, 0) << color(0,0,0) << box(SX, SY);// képernyő törlése
         for( size_t i=0; i<widgets.size(); ++i )
             widgets[i]->draw();                             // képernyő újra rajzolása
         gout << refresh;                                    // képernyő frissítése
@@ -61,3 +58,4 @@ void Application::run() {
 void Application::shutdown() {
     isExiting = true;                                       // kilépés inicializálása
 }
+

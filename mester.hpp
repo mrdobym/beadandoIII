@@ -6,20 +6,25 @@
 
 using namespace std;
 
-class Mester{
+class Mester
+{
 protected:
     vector<vector<int>> feladat;
     vector<vector<int>> megoldas;
+    string feladat_nev;
+    string megold_nev;
 public:
-    void ertekbetolt(vector<vector<int>> matrix,string fajl);
-    void megoldasbetolt(vector<vector<int>> matrix2,string fajl2);
+    Mester(string _feladat_nev,string _megold_nev);
+    vector<vector<int>> filebeolvas(string file_nev);
     bool oszlopban(int oszlopszam, int ertek);
     bool sorban(int sorszam, int ertek);
     bool mezoben(int mezoszam, int ertek);
 
+    void run();
     void solve();
     void general();
 
 };
 
 #endif // MESTER_HPP
+

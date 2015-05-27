@@ -1,7 +1,7 @@
 #ifndef APPLICATION_HPP
 #define APPLICATION_HPP
 
-#include "widgets.hpp"
+#include "widget.hpp"
 #include <vector>
 
 class Application { // grafikus alkalmazás
@@ -12,7 +12,6 @@ class Application { // grafikus alkalmazás
         int SX, SY;                     // képernyõ méret
         std::string name;                    // az alkalmazás neve
 
-
     public:
         Application( int _SX, int _SY, std::string _name );// ablak méret és név alapján program létrehozása
         void addWidget( Widget *w );    // új vezérlõ felvétele
@@ -22,7 +21,7 @@ class Application { // grafikus alkalmazás
         int width() const { return SX; }
         int height() const { return SY; }
 
-
 };
 
 #endif // APPLICATION_HPP
+

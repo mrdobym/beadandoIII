@@ -1,19 +1,19 @@
 #include "button.hpp"
+#include "szamok.hpp"
 using namespace genv;
 
 Button::Button(int px, int py, int sx, int sy, std::string text)
 : Widget(px, py, sx, sy)
 {
     _text = text;
-    allandosag=false;
 }
 
 void Button::draw()
 {
     gout << move_to(x, y) << color(255,255,255) << box(size_x, size_y);
 
-    if( allandosag ) gout << color(0,0,100);
-    else gout << color(150,150,150);
+    if( inFocus ) gout << color(0,0,100);
+    else gout << color(0,0,50);
     gout << move_to( x + 1, y + 1) << box( size_x - 2, size_y - 2);
 
     gout << color(255,255,255)
@@ -30,9 +30,3 @@ void Button::handle(event ev)
         action(); // hajtsuk végre az akciót
     }
 }
-
-void Button::setText(std::string szoveg)
-{
-    _text=szoveg;
-}
-
